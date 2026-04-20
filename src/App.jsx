@@ -815,21 +815,57 @@ export default function App() {
         const r = new FileReader(); r.onloadend = () => res(r.result.split(',')[1]); r.readAsDataURL(tBlob);
       });
 
-      const prompt = `You are performing a face swap on a template image.
+      const prompt = `You are given two images:
 
-Image 1 (TEMPLATE): This is the $ME mascot artwork. It contains TWO versions of the same character — one person holding a mirror, and their reflection inside the mirror. Both figures are the same character.
-
-Image 2 (USER PHOTO): This is a photo of a real person. Extract their facial features, skin tone, and face shape.
+- Image 1 (TEMPLATE): A composition showing a character holding a mirror and their reflection.
+- Image 2 (USER IMAGE): The user’s character or face.
 
 YOUR TASK:
-- Replace BOTH faces in Image 1 with the face from Image 2
-- The person holding the mirror: swap their face with the user's face
-- The reflection inside the mirror: also swap with the user's face (they should match since it's a mirror)
-- Keep EVERYTHING else in Image 1 completely unchanged — the body, clothing, pose, the mirror object, the background, art style, colors, lighting, composition
-- Only the faces change, nothing else
-- The result should look like the original $ME mascot artwork but both figures have the user's face
-- Maintain the artistic style of Image 1 — do not make it photorealistic
-- Output square format, same style and quality as Image 1`;
+
+Transform Image 1 so that the character becomes the user’s character from Image 2, while preserving the mirror concept.
+
+CORE RULES:
+
+1. IDENTITY TRANSFER
+- Replace the character in Image 1 with the character from Image 2.
+- This includes the face, hairstyle, skin tone, and outfit.
+- The outer character (holding the mirror) and the reflection must represent the SAME identity.
+
+2. MIRROR CONCEPT (CRITICAL)
+- The outer character = the “current” version.
+- The reflection = the “uplifted / ideal / best version” of the same character.
+- The reflection should look more confident, refined, powerful, or successful.
+- Do NOT change identity — only enhance presence, expression, and subtle details.
+
+3. STYLE ADAPTATION
+- The FINAL IMAGE must adopt the art style of Image 2 (the user’s image).
+- Convert the entire scene (including background, lighting, and rendering) to match the user’s style.
+- Ensure everything looks cohesive in that style (anime, realistic, cartoon, etc.).
+
+4. CLOTHING & DESIGN
+- The character’s outfit should match or be inspired by the outfit in Image 2.
+- You may adapt it to fit the pose naturally, but keep it recognizable.
+
+5. COMPOSITION PRESERVATION
+- Keep the composition of Image 1:
+  - Character holding a mirror
+  - Reflection visible inside the mirror
+  - Same framing and layout
+- Do NOT remove the mirror or change the core concept.
+
+6. LIGHTING & INTEGRATION
+- Adjust lighting, shading, and colors to match the new style.
+- Ensure both the character and reflection feel naturally integrated.
+
+7. FACE & ANGLES
+- Adapt the face to match the head angles in both positions.
+- Maintain consistency between outer character and reflection.
+
+8. OUTPUT
+- Square format (1:1)
+- High quality
+- Clean, seamless, and visually striking
+- The result should feel like the user’s character discovering their best self`;
 
       const res = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${GEMINI_KEY}`,
