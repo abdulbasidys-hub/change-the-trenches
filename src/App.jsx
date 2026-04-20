@@ -608,45 +608,30 @@ export default function App() {
 
       const prompt = `You are given:
 
-- Image 1 (TEMPLATE): A character holding a mirror with a reflection.
+- Image 1 (TEMPLATE): A character holding a mirror.
 - Image 2 (USER IMAGE): The user’s character.
 
 TASK:
 Recreate Image 1 using the character from Image 2.
 
-IMPORTANT: The TEMPLATE is ONLY for pose and composition — NOT for character identity.
-
 RULES:
 
-1. FULL CHARACTER REPLACEMENT
-- Completely replace the TEMPLATE character with the character from Image 2.
-- This includes head shape, face, body type, proportions, and hands.
-- Do NOT retain any part of the original TEMPLATE character in both the reflection and the main character.
+1. REPLACE CHARACTER
+- Completely replace the TEMPLATE character with the user’s character.
+- Do NOT keep any part of the original character (no head, body, or hands) in both character and reflection.
 
-2. POSE & POSITION
-- Keep the exact pose, camera angle, and composition from Image 1.
-- The user’s character must be positioned exactly like the TEMPLATE (holding the mirror in the same way).
+2. KEEP POSE
+- Keep the exact pose, position, and composition from Image 1 (holding the mirror the same way).
 
-3. MIRROR LOGIC
-- The outer character = the user’s normal version.
-- The reflection = the same character, but uplifted / ideal (more confident, refined, powerful).
-- Same identity, slightly enhanced presence.
+3. MIRROR
+- Outer character = normal version (of the uploaded character).
+- Reflection = same character, but uplifted / improved (more confident, refined).
 
 4. STYLE
-- The entire final image must match the art style of Image 2.
-- Apply this style consistently across character, background, and mirror.
+- Match the art style of Image 2 for the entire image.
 
-5. CLOTHING
-- Use the outfit from Image 2, adapted naturally to the pose.
-
-6. INTEGRATION
-- Match lighting, perspective, and proportions correctly.
-- Ensure hands, grip, and anatomy look natural in the pose.
-
-7. OUTPUT
-- Square (1:1)
-- High quality
-- Seamless result with no trace of the original TEMPLATE character`;
+5. OUTPUT
+- Square (1:1), high quality, clean, and seamless.`;
 
       const res = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${GEMINI_KEY}`,
