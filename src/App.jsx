@@ -606,32 +606,17 @@ export default function App() {
       const tBlob = await tRes.blob();
       const tB64 = await new Promise(res => { const r = new FileReader(); r.onloadend = () => res(r.result.split(',')[1]); r.readAsDataURL(tBlob); });
 
-      const prompt = `You are given:
+      const prompt = `You are not editing the template character. You are rebuilding the entire scene using the user’s character.
 
-- Image 1 (TEMPLATE): A character holding a mirror.
-- Image 2 (USER IMAGE): The user’s character.
+Image 1 is only a pose and composition reference. Ignore the identity, body, head, and hands of the template character completely. Do not reuse or modify the original character in any way.
 
-TASK:
-Recreate Image 1 using the character from Image 2.
+Take the character from Image 2 and place them into the exact same position, pose, and perspective as the character in Image 1. The user’s character must fully replace the template character, including head shape, body type, proportions, and hands, so it looks like they are naturally the one holding the mirror.
 
-RULES:
+Inside the mirror, show the same character, but as an uplifted and improved version of themselves — more confident, refined, and powerful. This is the same identity, not a different character.
 
-1. REPLACE CHARACTER
-- Completely replace the TEMPLATE character with the user’s character.
-- Do NOT keep any part of the original character (no head, body, or hands) in both character and reflection.
+The entire final image should match the art style of the user’s image. Adapt the full scene (character, background, lighting) so everything looks consistent in that style.
 
-2. KEEP POSE
-- Keep the exact pose, position, and composition from Image 1 (holding the mirror the same way).
-
-3. MIRROR
-- Outer character = normal version (of the uploaded character).
-- Reflection = same character, but uplifted / improved (more confident, refined).
-
-4. STYLE
-- Match the art style of Image 2 for the entire image.
-
-5. OUTPUT
-- Square (1:1), high quality, clean, and seamless.`;
+The final result should look like the user’s character is standing there, holding a mirror, and seeing the best version of themselves.`;
 
       const res = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${GEMINI_KEY}`,
