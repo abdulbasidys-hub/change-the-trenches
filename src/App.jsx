@@ -621,7 +621,7 @@ RULES:
 1. FULL CHARACTER REPLACEMENT
 - Completely replace the TEMPLATE character with the character from Image 2.
 - This includes head shape, face, body type, proportions, and hands.
-- Do NOT retain any part of the original TEMPLATE character (no Pepe features at all).
+- Do NOT retain any part of the original TEMPLATE character in both the reflection and the main character.
 
 2. POSE & POSITION
 - Keep the exact pose, camera angle, and composition from Image 1.
