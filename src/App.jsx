@@ -1064,7 +1064,7 @@ export default function App() {
             </motion.span>
           </motion.span>
           <motion.span className="hero-reflection" aria-hidden="true"
-            initial={{ opacity: 0 }} animate={{ opacity: 0.07 }}
+            initial={{ opacity: 2 }} animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}>
             Change starts with $ME
           </motion.span>
