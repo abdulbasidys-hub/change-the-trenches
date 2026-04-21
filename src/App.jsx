@@ -528,7 +528,7 @@ Examples of the right tone:
 "Looking in the mirror honestly is braver than any trade you'll ever make."
 "The best investment you'll ever make is in the person holding the phone."
 
-Output ONLY the quote. No quotation marks. No explanation.`;`;
+Output ONLY the quote. No quotation marks. No explanation.`;
 
   const getNext = async () => {
     if (loading) return;
