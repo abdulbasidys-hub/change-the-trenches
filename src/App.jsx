@@ -733,7 +733,7 @@ If any of these are not true, correct the image before completing the task.
         <div className="pfp-inner">
           <div className="sec-label">PFP Cult — AI transformation</div>
           <h2 className="pfp-h">Upload your character.<br/>Become <span>$ME</span>.</h2>
-          <p className="pfp-sub">Our AI puts your character into the $ME mirror scene — both the one holding the mirror and the reflection inside it.</p>
+          <p className="pfp-sub">Get to see the person you will become.</p>
 
           <div className="forge-grid">
             {/* Upload */}
