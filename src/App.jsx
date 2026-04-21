@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 
 // ─── UPDATE THESE ─────────────────────────────────────────────────────────────
-const CA = "PASTE_YOUR_CA_HERE";
-const TWITTER = "https://x.com/your_me_handle";
-const COMMUNITY = "https://x.com/i/communities/your_community_id";
+const CA = "AgQvpRjyd7pwtzMLZjGGbycSqwipdaRqpcC67K4xpump";
+const TWITTER = "https://x.com/i/communities/2037371326072062076";
+const COMMUNITY = "https://x.com/i/communities/2037371326072062076";
 const GEMINI_KEY = import.meta.env?.VITE_APP_GEMINI || '';
 
 const css = `
